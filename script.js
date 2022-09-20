@@ -2,7 +2,7 @@
 
 let mainInfo = {
    name: 'Madiar',
-   surname: 'Shakhmanov',
+   surname: 'Shakhman',
 
    dateofBirth: {
       day: 11,
@@ -363,21 +363,22 @@ let timeForCode = [
 
 ]
 
-const timeList = timeForCode.map((arr) => arr.time);
-const monthList = timeForCode.map((arr) => arr.month);
 
-//Общее количество затраченного времени
+//Общее количество затраченных часов
 function totalTime(arr) {
-   const totalCount = timeList.reduce((acc, curr) => acc + curr)
+   const totalCount = arr.reduce((acc, curr) => acc + curr.time, 0)
    console.log(Math.ceil(totalCount / 60));
 }
 totalTime(timeForCode)
 
 
-
-//console.log(monthList);
-
-function monthTime(arr, month) {
-
+//Количество затраченных часов по месяцам
+function timeByMonth(arr, month) {
+   const filterMonth = arr.filter(item => item.month === month) //отфильтрованные месяца по аргументу функции
+   const countTime = filterMonth.reduce((total, curr) => {   //сумма времени
+      return total + curr.time
+   }, 0)
+   console.log(Math.ceil(countTime / 60));
 }
-monthTime(timeForCode)
+timeByMonth(timeForCode, 8)
+
