@@ -360,7 +360,84 @@ let timeForCode = [
       time: 120,
       rate: 3
    }
-
+   ,
+   {
+      day: 16,
+      month: 9,
+      time: 91,
+      rate: 3
+   }
+   ,
+   {
+      day: 19,
+      month: 9,
+      time: 52,
+      rate: 2
+   }
+   ,
+   {
+      day: 20,
+      month: 9,
+      time: 105,
+      rate: 4
+   }
+   ,
+   {
+      day: 21,
+      month: 9,
+      time: 112,
+      rate: 3
+   }
+   ,
+   {
+      day: 22,
+      month: 9,
+      time: 110,
+      rate: 3
+   }
+   ,
+   {
+      day: 23,
+      month: 9,
+      time: 109,
+      rate: 4
+   }
+   ,
+   {
+      day: 24,
+      month: 9,
+      time: 77,
+      rate: 3
+   }
+   ,
+   {
+      day: 26,
+      month: 9,
+      time: 150,
+      rate: 3
+   }
+   ,
+   {
+      day: 28,
+      month: 9,
+      time: 150,
+      rate: 3
+   }
+   ,
+   {
+      day: 29,
+      month: 9,
+      time: 72,
+      rate: 3
+   }
+   ,
+   {
+      day: 30,
+      month: 9,
+      time: 101,
+      rate: 3
+   }
+   ,
 ]
 
 
