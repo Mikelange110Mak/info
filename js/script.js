@@ -438,6 +438,41 @@ let timeForCode = [
       rate: 3
    }
    ,
+   {
+      day: 3,
+      month: 10,
+      time: 60,
+      rate: 2
+   }
+   ,
+   {
+      day: 4,
+      month: 10,
+      time: 155,
+      rate: 4
+   }
+   ,
+   {
+      day: 5,
+      month: 10,
+      time: 62,
+      rate: 3
+   }
+   ,
+   {
+      day: 7,
+      month: 10,
+      time: 163,
+      rate: 4
+   }
+   ,
+   {
+      day: 9,
+      month: 10,
+      time: 113,
+      rate: 3
+   }
+
 ]
 
 
