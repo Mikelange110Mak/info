@@ -472,6 +472,41 @@ let timeForCode = [
       time: 113,
       rate: 3
    }
+   ,
+   {
+      day: 10,
+      month: 10,
+      time: 130,
+      rate: 4
+   }
+   ,
+   {
+      day: 11,
+      month: 10,
+      time: 120,
+      rate: 3
+   }
+   ,
+   {
+      day: 12,
+      month: 10,
+      time: 90,
+      rate: 4
+   }
+   ,
+   {
+      day: 13,
+      month: 10,
+      time: 166,
+      rate: 3
+   }
+   ,
+   {
+      day: 14,
+      month: 10,
+      time: 68,
+      rate: 3
+   }
 
 ]
 
@@ -492,5 +527,5 @@ function timeByMonth(arr, month) {
    }, 0)
    console.log(Math.ceil(countTime / 60));
 }
-timeByMonth(timeForCode, 8)
+timeByMonth(timeForCode, 10)
 
