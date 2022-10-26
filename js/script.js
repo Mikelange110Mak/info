@@ -521,6 +521,20 @@ let timeForCode = [
       time: 95,
       rate: 3
    }
+   ,
+   {
+      day: 17,
+      month: 10,
+      time: 105,
+      rate: 3
+   }
+   ,
+   {
+      day: 18,
+      month: 10,
+      time: 92,
+      rate: 3
+   }
 ]
 
 
