@@ -1,7 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
 body {
    background-color: rgb(65, 64, 64);
+   font-family: 'Mulish', sans-serif;
 }
 
 h2 {
    color: wheat;
+}
+
+.period {
+   display: flex;
+   background-color: rgb(238, 240, 255);
+   flex-direction: column;
+   flex-wrap: wrap;
+   padding: 10px;
+   gap: 10px;
+   border-radius: 8px;
+   // .period__day
+
+   &__day {}
+
+   // .period__label
+
+   &__label {}
+
+   // .period__day-input
+
+   &__day-input {}
+
+   // .period__month
+
+   &__month {}
+
+   // .period__month-input
+
+   &__month-input {}
+
+   // .period__month-item
+
+   &__month-item {}
+
+   // .period__result
+
+   &__result {
+      flex: 0 1 30px;
+   }
+
+   // .period__result-hours
+
+   &__result-hours {}
 }
