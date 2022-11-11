@@ -12,7 +12,7 @@
    <div class="wrapper">
       <header class="header"></header>
       <main class="main">
-         <h2>Check</h2>
+         <h2>Уделенное время</h2>
          <form class="period" action="">
             <div class="period__day">
                <label class="period__label" for="day">Введите число</label>
@@ -39,6 +39,33 @@
                <div class="period__result-hours">500</div>
             </div>
 
+         </form>
+
+         <h2>Добавить День</h2>
+         <form class="add" action="">
+
+            <div class="add__day">
+               <label class="add__day-label" for="day-date">Введите число</label>
+               <input class="add__day-input" type="text" name="day-date" id="day-date" maxlength="2">
+            </div>
+            <div class="add__month">
+               <label class="add__month-label" for="month-date">Выберите месяц</label>
+               <select class="add__month-input" name="month-date" id="month-date">
+                  <option class="add__month-item" value="jan">Январь</option>
+                  <option class="add__month-item" value="feb">Февраль</option>
+                  <option class="add__month-item" value="mar">Март</option>
+                  <option class="add__month-item" value="apr">Апрель</option>
+                  <option class="add__month-item" value="may">Май</option>
+                  <option class="add__month-item" value="jun">Июнь</option>
+                  <option class="add__month-item" value="jul">Июль</option>
+                  <option class="add__month-item" value="aug">Август</option>
+                  <option class="add__month-item" value="sep">Сентябрь</option>
+                  <option class="add__month-item" value="oct">Октябрь</option>
+                  <option class="add__month-item" value="nov">Ноябрь</option>
+                  <option class="add__month-item" value="dec">Декабрь</option>
+               </select>
+            </div>
+            <button class="add__button" type="submit">Добавить</button>
          </form>
       </main>
       <footer class="footer"></footer>

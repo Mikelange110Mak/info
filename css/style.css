@@ -22,10 +22,38 @@ h2 {
   padding: 10px;
   gap: 10px;
   border-radius: 8px;
+  margin-bottom: 50px;
 }
 
 .period__result {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 30px;
           flex: 0 1 30px;
+  background-color: #dddff1;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.add {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #eef0ff;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 10px;
+  gap: 10px;
+  border-radius: 8px;
+}
+
+.add__day-input {
+  max-width: 20px;
+  border-radius: 7px;
+  outline: none;
+  padding: 0 8px;
+  height: 20px;
 }

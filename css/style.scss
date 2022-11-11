@@ -17,6 +17,7 @@ h2 {
    padding: 10px;
    gap: 10px;
    border-radius: 8px;
+   margin-bottom: 50px;
    // .period__day
 
    &__day {}
@@ -45,9 +46,57 @@ h2 {
 
    &__result {
       flex: 0 1 30px;
+      background-color: rgb(221, 223, 241);
+      padding: 5px;
+      border-radius: 8px;
    }
 
    // .period__result-hours
 
    &__result-hours {}
+}
+
+.add {
+   display: flex;
+   background-color: rgb(238, 240, 255);
+   flex-direction: column;
+   flex-wrap: wrap;
+   padding: 10px;
+   gap: 10px;
+   border-radius: 8px;
+   // .add__day
+
+   &__day {}
+
+   // .add__day-label
+
+   &__day-label {}
+
+   // .add__day-input
+
+   &__day-input {
+      max-width: 20px;
+      border-radius: 7px;
+      outline: none;
+      padding: 0 8px;
+      height: 20px;
+   }
+
+   // .add__month
+
+   &__month {}
+
+   // .add__month-label
+
+   &__month-label {}
+
+   // .add__month-input
+
+   &__month-input {}
+
+   // .add__month-item
+
+   &__month-item {}
+
+   &__button {}
 }
