@@ -25,6 +25,14 @@ h2 {
   margin-bottom: 50px;
 }
 
+.period__day-input {
+  max-width: 40px;
+  border-radius: 7px;
+  outline: none;
+  padding: 0 8px;
+  height: 20px;
+}
+
 .period__result {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 30px;
@@ -51,7 +59,15 @@ h2 {
 }
 
 .add__day-input {
-  max-width: 20px;
+  max-width: 40px;
+  border-radius: 7px;
+  outline: none;
+  padding: 0 8px;
+  height: 20px;
+}
+
+.add__minutes-input {
+  max-width: 40px;
   border-radius: 7px;
   outline: none;
   padding: 0 8px;

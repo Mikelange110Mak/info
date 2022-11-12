@@ -16,7 +16,7 @@
          <form class="period" action="">
             <div class="period__day">
                <label class="period__label" for="day">Введите число</label>
-               <input class="period__day-input" id="day" type="text" required>
+               <input class="period__day-input" id="day" type="number" value="5" min="0" max="31" required>
             </div>
             <div class="period__month">
                <label class="period__label" for="month">Выбрать месяц</label>
@@ -29,7 +29,7 @@
                   <option class="period__month-item" value="jun">Июнь</option>
                   <option class="period__month-item" value="jul">Июль</option>
                   <option class="period__month-item" value="aug">Август</option>
-                  <option class="period__month-item" value="sep">Сентябрь</option>
+                  <option class="period__month-item" selected value="sep">Сентябрь</option>
                   <option class="period__month-item" value="oct">Октябрь</option>
                   <option class="period__month-item" value="nov">Ноябрь</option>
                   <option class="period__month-item" value="dec">Декабрь</option>
@@ -46,7 +46,7 @@
 
             <div class="add__day">
                <label class="add__day-label" for="day-date">Введите число</label>
-               <input class="add__day-input" type="text" name="day-date" id="day-date" maxlength="2">
+               <input class="add__day-input" type="number" name="day-date" id="day-date" min="1" max="31">
             </div>
             <div class="add__month">
                <label class="add__month-label" for="month-date">Выберите месяц</label>
@@ -63,6 +63,20 @@
                   <option class="add__month-item" value="oct">Октябрь</option>
                   <option class="add__month-item" value="nov">Ноябрь</option>
                   <option class="add__month-item" value="dec">Декабрь</option>
+               </select>
+            </div>
+            <div class="add__minutes">
+               <label class="add__minutes-label" for="minutes-date">Количество минут</label>
+               <input class="add__minutes-input" type="text" name="minutes-date" id="minutes-date" maxlength="3">
+            </div>
+            <div class="add__rate">
+               <label class="add__rate-label" for="rate-date">Оцените день</label>
+               <select class="add__rate-input" name="rate-date" id="rate-date">
+                  <option class="add__rate-item" value="1">1</option>
+                  <option class="add__rate-item" value="2">2</option>
+                  <option class="add__rate-item" value="3">3</option>
+                  <option class="add__rate-item" value="4">4</option>
+                  <option class="add__rate-item" value="5">5</option>
                </select>
             </div>
             <button class="add__button" type="submit">Добавить</button>
