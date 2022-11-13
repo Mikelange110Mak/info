@@ -16,7 +16,8 @@ window.addEventListener('DOMContentLoaded', () => {
    const resultOutput = document.querySelector('.period__result'),
       monthSelector = document.querySelector('.period__month-input'),
       dayPeriod = document.querySelector('.period__day-input'),
-      monthPeriod = document.getElementById('month').selectedIndex;
+      monthPeriod = document.getElementById('month').selectedIndex,
+      periodBtn = document.querySelector('.period__button');
 
 
    let selectedValue = monthSelector.options[month.selectedIndex].value;
@@ -30,8 +31,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
+   periodBtn.addEventListener('click', (e) => {
+      e.preventDefault()
 
 
+   })
 
 
 
@@ -93,8 +97,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
    }
 
-   req()
 
+   req()
 
    //Вспомогательная функция которая будет оптимизировать и проверять fetch запросы
    async function getResource(url) {
