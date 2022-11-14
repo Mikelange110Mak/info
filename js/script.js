@@ -15,26 +15,21 @@ window.addEventListener('DOMContentLoaded', () => {
 
    const resultOutput = document.querySelector('.period__result'),
       monthSelector = document.querySelector('.period__month-input'),
-      dayPeriod = document.querySelector('.period__day-input'),
       monthPeriod = document.getElementById('month').selectedIndex,
-      periodBtn = document.querySelector('.period__button');
+      periodBtn = document.querySelector('.period__button'),
+      form = document.querySelector('.period');
 
 
-   let selectedValue = monthSelector.options[month.selectedIndex].value;
-   console.log(selectedValue);
-
-   let dayValue = document.querySelector('.period__day-input').value
-   console.log(dayValue);
-
+   //let selectedValue = monthSelector.options[month.selectedIndex].value;
+   //console.log(+selectedValue);
 
 
 
-
-
-   periodBtn.addEventListener('click', (e) => {
+   form.addEventListener('submit', (e) => {
       e.preventDefault()
-
-
+      const n = document.getElementById('month').value;
+      console.log(+n);
+      req(+n)
    })
 
 
@@ -43,7 +38,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-   function req() {
+
+
+
+
+
+
+
+
+   function req(monthSelect) {
 
       /*
       //Делаю POST запрос
@@ -91,14 +94,15 @@ window.addEventListener('DOMContentLoaded', () => {
       //Вместо fetch запроса выше, использую обновленный со вспомогательной функцией:
 
       getResource("http://localhost:3000/timeForCode")
-         .then(data => timeByMonth(data.data, monthPeriod + 1, +dayValue))
+         //.then(data => timeByMonth(data.data, monthPeriod + 1, +dayValue))
+         .then(data => timeByMonth(data.data, monthSelect))
          .catch(err => console.error(err))
 
 
    }
 
 
-   req()
+   //req()
 
    //Вспомогательная функция которая будет оптимизировать и проверять fetch запросы
    async function getResource(url) {
@@ -121,64 +125,47 @@ window.addEventListener('DOMContentLoaded', () => {
    */
 
 
+   function createColumns(arr, selector) {
+      for (let el of arr) {
+
+         let newColumn = document.createElement('li')
+         newColumn.innerHTML = `
+      ${el}
+      `
+         selector.append(newColumn)
+      }
+   }
+
 
    //Количество затраченных часов по месяцам
-   function timeByMonth(arr, month, day) {
-      const filterMonth = arr.filter(item => item.month === month) //отфильтрованные месяца по аргументу функции
-      const countTime = filterMonth.reduce((total, curr) => {   //сумма времени
-         return total + curr.time
-      }, 0)
+   function timeByMonth(arr, month) {
+      if (arr) {
+         const filterMonth = arr.filter(item => item.month === month) //отфильтрованные месяца по аргументу функции
 
+         //Разбитие на массивы по дням/времени/оценки
+         const dayfilter = filterMonth.map(item => item.day)
+         const timefilter = filterMonth.map(item => item.time)
+         const ratefilter = filterMonth.map(item => item.rate)
 
-      const filterDay = filterMonth.filter(item => item.day === day) //отфильтрованный денек, по месяцу
-      const countDayTime = filterDay.filter(item => item.time)
-      let dayCount = 0
-      for (let t of countDayTime) {
-         dayCount = t.time
-      }
+         //Получение элементов колонок дней/времени/оценки
+         const dayColumn = document.getElementById('daylist')
+         const timeColumn = document.getElementById('timelist')
+         const rateColumn = document.getElementById('ratelist')
 
-      console.log(dayCount);
+         //Создание элементов в колонках
+         createColumns(dayfilter, dayColumn)
+         createColumns(timefilter, timeColumn)
+         createColumns(ratefilter, rateColumn)
 
+         //Получение среднего значения
+         const averageCount = timefilter.reduce((a, b) => (a + b), 0)
+         console.log(Math.round(averageCount / dayfilter.length));
+         const averageContent = document.querySelector('.period__average');
+         averageContent.innerHTML = `
+   Среднее значение в минутах = ${Math.round(averageCount / dayfilter.length)}
+   `
+      } else console.log('none');
 
-      let monthText = '';
-      switch (true) {
-         case (month === 1): monthText = 'Январь'; break;
-         case (month === 2): monthText = 'Февраль'; break;
-         case (month === 3): monthText = 'Март'; break;
-         case (month === 4): monthText = 'Апрель'; break;
-         case (month === 5): monthText = 'Май'; break;
-         case (month === 6): monthText = 'Июнь'; break;
-         case (month === 7): monthText = 'Июль'; break;
-         case (month === 8): monthText = 'Август'; break;
-         case (month === 9): monthText = 'Сентябрь'; break;
-         case (month === 10): monthText = 'Октябрь'; break;
-         case (month === 11): monthText = 'Ноябрь'; break;
-         case (month === 12): monthText = 'Декабрь'; break;
-      }
-
-
-      switch (true) {
-         case (countTime !== 0 && dayCount === 0): resultOutput.innerHTML = `
-   <div class="period__result-hours">Данные за этот день не обнаружены</div>
-   `; break;
-         case (countTime !== 0 && dayCount !== 0): resultOutput.innerHTML = `
-   <div class="period__result-hours">${Math.ceil(dayCount)} минут за ${monthText} ${day}-ое</div>
-   `; break;
-         case (countTime === 0): resultOutput.innerHTML = `
-   <div class="period__result-hours">Нет данных за ${monthText} месяц</div>
-   `; break
-      }
-
-      /*
-            if (countTime !== 0) resultOutput.innerHTML = `
-               <div class="period__result-hours">${Math.ceil(countTime / 60)} часов за ${monthText} месяц</div>
-               `;
-      
-            else resultOutput.innerHTML = `
-                <div class="period__result-hours">Нет данных за ${monthText} месяц</div>
-                `;
-      */
-      //console.log(Math.ceil(countTime / 60));
 
 
    }
@@ -189,16 +176,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-/*
-function totalTime(arr) {
-   const totalCount = arr.reduce((acc, curr) => acc + curr.time, 0)
-   console.log(Math.ceil(totalCount / 60));
-   resultOutput.innerHTML = `
-   <div class="period__result-hours">${Math.ceil(totalCount / 60)} часов</div>
-   `
-}
-totalTime(data)
 
+
+
+/*
 function timeByMonth(arr, month) {
    const filterMonth = arr.filter(item => item.month === month) //отфильтрованные месяца по аргументу функции
    const countTime = filterMonth.reduce((total, curr) => {   //сумма времени

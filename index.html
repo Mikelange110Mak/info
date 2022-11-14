@@ -13,31 +13,44 @@
       <header class="header"></header>
       <main class="main">
          <h2>Уделенное время</h2>
-         <form class="period" action="">
-            <div class="period__day">
-               <label class="period__label" for="day">Введите число</label>
-               <input class="period__day-input" id="day" type="number" value="13" min="0" max="31" required>
-            </div>
+         <form class="period" action="#">
             <div class="period__month">
                <label class="period__label" for="month">Выбрать месяц</label>
                <select class="period__month-input" name="month" id="month">
-                  <option class="period__month-item" value="jan">Январь</option>
-                  <option class="period__month-item" value="feb">Февраль</option>
-                  <option class="period__month-item" value="mar">Март</option>
-                  <option class="period__month-item" value="apr">Апрель</option>
-                  <option class="period__month-item" value="may">Май</option>
-                  <option class="period__month-item" value="jun">Июнь</option>
-                  <option class="period__month-item" value="jul">Июль</option>
-                  <option class="period__month-item" value="aug">Август</option>
-                  <option class="period__month-item" selected value="sep">Сентябрь</option>
-                  <option class="period__month-item" value="oct">Октябрь</option>
-                  <option class="period__month-item" value="nov">Ноябрь</option>
-                  <option class="period__month-item" value="dec">Декабрь</option>
+                  <option class="period__month-item" value="1">Январь</option>
+                  <option class="period__month-item" value="2">Февраль</option>
+                  <option class="period__month-item" value="3">Март</option>
+                  <option class="period__month-item" value="4">Апрель</option>
+                  <option class="period__month-item" value="5">Май</option>
+                  <option class="period__month-item" value="6">Июнь</option>
+                  <option class="period__month-item" value="7">Июль</option>
+                  <option class="period__month-item" value="8">Август</option>
+                  <option class="period__month-item" value="9">Сентябрь</option>
+                  <option class="period__month-item" selected value="10">Октябрь</option>
+                  <option class="period__month-item" value="11">Ноябрь</option>
+                  <option class="period__month-item" value="12">Декабрь</option>
                </select>
             </div>
             <button class="period__button" type="submit">Принять</button>
             <div class="period__result">
-               <div class="period__result-hours">500</div>
+               <div class="period__row">
+                  <div class="period__column"> День
+                     <ul class="period__column-list" id="daylist">
+
+                     </ul>
+                  </div>
+                  <div class="period__column"> Время
+                     <ul class="period__column-list" id="timelist">
+
+                     </ul>
+                  </div>
+                  <div class="period__column"> Оценка
+                     <ul class="period__column-list" id="ratelist">
+
+                     </ul>
+                  </div>
+               </div>
+               <div class="period__average"></div>
             </div>
 
          </form>
