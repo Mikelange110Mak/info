@@ -104,7 +104,7 @@ h2 {
 
    &__average {
       text-align: center;
-      margin-top: 20px;
+      padding: 8px 0;
       font-weight: 700;
    }
 }
@@ -153,4 +153,8 @@ h2 {
       @include shortInput();
    }
 
+}
+
+.hide {
+   display: none;
 }

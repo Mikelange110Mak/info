@@ -13,36 +13,16 @@ window.addEventListener('DOMContentLoaded', () => {
       }
    }
 
-   const resultOutput = document.querySelector('.period__result'),
-      monthSelector = document.querySelector('.period__month-input'),
-      monthPeriod = document.getElementById('month').selectedIndex,
-      periodBtn = document.querySelector('.period__button'),
-      form = document.querySelector('.period');
-
-
-   //let selectedValue = monthSelector.options[month.selectedIndex].value;
-   //console.log(+selectedValue);
-
+   const form = document.querySelector('.period'),
+      periodRow = document.querySelector('.period__row'),
+      averageContent = document.querySelector('.period__average');
 
 
    form.addEventListener('submit', (e) => {
       e.preventDefault()
       const n = document.getElementById('month').value;
-      console.log(+n);
       req(+n)
    })
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -115,58 +95,53 @@ window.addEventListener('DOMContentLoaded', () => {
    }
 
 
-   /*
-      //Общее количество затраченных часов
-      function totalTime(arr) {
-         const totalCount = arr.reduce((acc, curr) => acc + curr.time, 0)
-         console.log(Math.ceil(totalCount / 60));
+   //Функция создания колонок с данными
+   function createColumns(arr, column, average) {
+      column.innerHTML = ''
+      if (arr.length > 0) {
+         periodRow.classList.remove('hide');
+         for (let el of arr) {
+            let newColumn = document.createElement('li')
+            newColumn.innerHTML =
+               `${el}`;
+            column.append(newColumn);
+
+         }
+         averageContent.innerHTML =
+            `Среднее значение в минутах = ${Math.round(average / arr.length)}`;
+
+      } else {
+         averageContent.innerHTML = `Данные за этот месяц  отсутствуют`;
+         periodRow.classList.add('hide');
       }
-      totalTime(data)
-   */
 
 
-   function createColumns(arr, selector) {
-      for (let el of arr) {
-
-         let newColumn = document.createElement('li')
-         newColumn.innerHTML = `
-      ${el}
-      `
-         selector.append(newColumn)
-      }
    }
 
 
    //Количество затраченных часов по месяцам
    function timeByMonth(arr, month) {
-      if (arr) {
-         const filterMonth = arr.filter(item => item.month === month) //отфильтрованные месяца по аргументу функции
 
-         //Разбитие на массивы по дням/времени/оценки
-         const dayfilter = filterMonth.map(item => item.day)
-         const timefilter = filterMonth.map(item => item.time)
-         const ratefilter = filterMonth.map(item => item.rate)
+      const filterMonth = arr.filter(item => item.month === month) //отфильтрованные месяца по аргументу функции
 
-         //Получение элементов колонок дней/времени/оценки
-         const dayColumn = document.getElementById('daylist')
-         const timeColumn = document.getElementById('timelist')
-         const rateColumn = document.getElementById('ratelist')
+      //Разбитие на массивы по дням/времени/оценки
+      const dayfilter = filterMonth.map(item => item.day),
+         timefilter = filterMonth.map(item => item.time),
+         ratefilter = filterMonth.map(item => item.rate);
 
-         //Создание элементов в колонках
-         createColumns(dayfilter, dayColumn)
-         createColumns(timefilter, timeColumn)
-         createColumns(ratefilter, rateColumn)
+      //Получение элементов колонок дней/времени/оценки
+      const dayColumn = document.getElementById('daylist'),
+         timeColumn = document.getElementById('timelist'),
+         rateColumn = document.getElementById('ratelist');
 
-         //Получение среднего значения
-         const averageCount = timefilter.reduce((a, b) => (a + b), 0)
-         console.log(Math.round(averageCount / dayfilter.length));
-         const averageContent = document.querySelector('.period__average');
-         averageContent.innerHTML = `
-   Среднее значение в минутах = ${Math.round(averageCount / dayfilter.length)}
-   `
-      } else console.log('none');
+      //Получение среднего значения
+      const averageCount = timefilter.reduce((a, b) => (a + b), 0)
 
 
+      //Создание элементов в колонках (массив, колонка, среднее значение)
+      createColumns(dayfilter, dayColumn, averageCount)
+      createColumns(timefilter, timeColumn, averageCount)
+      createColumns(ratefilter, rateColumn, averageCount)
 
    }
 
@@ -174,46 +149,4 @@ window.addEventListener('DOMContentLoaded', () => {
 
 })
 
-
-
-
-
-
-/*
-function timeByMonth(arr, month) {
-   const filterMonth = arr.filter(item => item.month === month) //отфильтрованные месяца по аргументу функции
-   const countTime = filterMonth.reduce((total, curr) => {   //сумма времени
-      return total + curr.time
-   }, 0)
-
-   let monthText = '';
-   switch (true) {
-      case (month === 1): monthText = 'Январь'; break;
-      case (month === 2): monthText = 'Февраль'; break;
-      case (month === 3): monthText = 'Март'; break;
-      case (month === 4): monthText = 'Апрель'; break;
-      case (month === 5): monthText = 'Май'; break;
-      case (month === 6): monthText = 'Июнь'; break;
-      case (month === 7): monthText = 'Июль'; break;
-      case (month === 8): monthText = 'Август'; break;
-      case (month === 9): monthText = 'Сентябрь'; break;
-      case (month === 10): monthText = 'Октябрь'; break;
-      case (month === 11): monthText = 'Ноябрь'; break;
-      case (month === 12): monthText = 'Декабрь'; break;
-   }
-
-   if (countTime !== 0) {
-      resultOutput.innerHTML = `
-<div class="period__result-hours">${Math.ceil(countTime / 60)} часов за ${monthText} месяц</div>
-`;
-   } else {
-      resultOutput.innerHTML = `
-<div class="period__result-hours">Нет данных за ${monthText} месяц</div>
-`;
-   }
-
-   console.log(Math.ceil(countTime / 60));
-}
-timeByMonth(data, 11)
-*/
 
