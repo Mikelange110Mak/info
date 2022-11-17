@@ -151,6 +151,7 @@ h2 {
 }
 
 .add__day-input {
+  min-width: 60px;
   max-width: 40px;
   border-radius: 7px;
   outline: none;

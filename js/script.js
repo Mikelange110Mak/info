@@ -2,87 +2,51 @@
 
 window.addEventListener('DOMContentLoaded', () => {
 
-   let mainInfo = {
-      name: 'Madiar',
-      surname: 'Shakhman',
-
-      dateofBirth: {
-         day: 11,
-         month: 1,
-         year: 1995
-      }
-   }
-
    const form = document.querySelector('.period'),
+      formAdd = document.querySelector('.add'),
       periodRow = document.querySelector('.period__row'),
       averageContent = document.querySelector('.period__average');
 
 
+
+   //Кнопка получения данных
    form.addEventListener('submit', (e) => {
       e.preventDefault()
       const n = document.getElementById('month').value;
-      req(+n)
+      getData(+n)
    })
 
 
-
-   function req(monthSelect) {
-
-      /*
-      //Делаю POST запрос
-      let body = {
-         hours: 'Some',
-         month: '',
-         id: Math.random() //Обязательно должен быть id
-      };
-
-      let json = JSON.stringify(body);
-
-      const request = new XMLHttpRequest();
-
-      request.open("POST", "http://localhost:3000/timeForCode")
-
-      request.setRequestHeader("Content-type", "application/json; charset=utf-8");
-
-      request.send(json);
+   //Кнопка отправки данных
+   formAdd.addEventListener('submit', (e) => {
+      e.preventDefault()
+      postData(formAdd)
+   })
 
 
-      request.addEventListener('load', () => {
-         //Если стадия запроса равна 4 и статус запроса 200
-         if (request.status === 200) {
-            //request.response - полученный ответ от сервера
-            let data = JSON.parse(request.response)
-            console.log(data);
+   //Функция отправки данных
+   function postData(formSelector) {
+      let formData = new FormData(formSelector);
+      formData.append("id", Math.random())
 
-
-         } else console.error('Что-то пошло не так :(')
-
+      let obj = {};
+      formData.forEach((value, key) => {
+         console.log(key);
+         obj[key] = +value;
       })
-*/
+      console.log(obj);
 
-      /*
-      //Создаем запрос
-      fetch("http://localhost:3000/timeForCode")
-         //Получаем данные, и у фетча есть метод парса json
-         .then(data => data.json())
-         //После этого по цепочке, его надо обработать, я вызываю функцию
-         .then(data => timeByMonth(data, 11))
-         //обработать ошибки:
-         .catch(err => console.error(err))
-         */
+      axios.post("http://localhost:3000/timeForCode", obj)
+   }
 
-      //Вместо fetch запроса выше, использую обновленный со вспомогательной функцией:
-
+   //Функция получения данных
+   function getData(monthSelect) {
       getResource("http://localhost:3000/timeForCode")
-         //.then(data => timeByMonth(data.data, monthPeriod + 1, +dayValue))
          .then(data => timeByMonth(data.data, monthSelect))
          .catch(err => console.error(err))
-
-
    }
 
 
-   //req()
 
    //Вспомогательная функция которая будет оптимизировать и проверять fetch запросы
    async function getResource(url) {
@@ -114,12 +78,10 @@ window.addEventListener('DOMContentLoaded', () => {
          averageContent.innerHTML = `Данные за этот месяц  отсутствуют`;
          periodRow.classList.add('hide');
       }
-
-
    }
 
 
-   //Количество затраченных часов по месяцам
+   //Функция подсчета затраченного времени по месяцам
    function timeByMonth(arr, month) {
 
       const filterMonth = arr.filter(item => item.month === month) //отфильтрованные месяца по аргументу функции
@@ -148,5 +110,3 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 })
-
-
