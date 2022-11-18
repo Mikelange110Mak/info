@@ -7,8 +7,6 @@ window.addEventListener('DOMContentLoaded', () => {
       periodRow = document.querySelector('.period__row'),
       averageContent = document.querySelector('.period__average');
 
-
-
    //Кнопка получения данных
    form.addEventListener('submit', (e) => {
       e.preventDefault()
