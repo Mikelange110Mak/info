@@ -5,6 +5,7 @@
    <meta charset="UTF-8">
    <link rel="stylesheet" href="css/style.css">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script defer src="js/script.js"></script>
    <title>Privat Case</title>
 </head>
 
@@ -14,7 +15,7 @@
       <main class="main">
          <h2>Уделенное время</h2>
          <form class="period" action="#">
-            <div class="period__month">
+            <div class="choose-month period__month">
                <label class="period__label" for="month">Выбрать месяц</label>
                <select class="period__month-input" name="month" id="month">
                   <option class="period__month-item" value="1">Январь</option>
@@ -62,7 +63,7 @@
                <label class="add__day-label" for="day">Введите число</label>
                <input class="add__day-input" type="number" name="day" id="day-date" min="1" max="31">
             </div>
-            <div class="add__month">
+            <div class="choose-month add__month">
                <label class="add__month-label" for="month">Выберите месяц</label>
                <select class="add__month-input" name="month" id="month-date">
                   <option class="add__month-item" value="1">Январь</option>
@@ -99,7 +100,6 @@
       <footer class="footer"></footer>
    </div>
    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-   <script src="js/script.js"></script>
 </body>
 
 </html>
